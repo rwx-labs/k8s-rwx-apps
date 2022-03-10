@@ -48,8 +48,8 @@ spec:
     - name: {{ $fullName }}
       kind: Service
       port: {{ .Values.service.port }}
-    {{- with .Values.ingress.tls }}
-    tls:
-      {{- toYaml . | nindent 6 }}
-    {{- end }}
+  {{- with .Values.ingress.tls }}
+  tls:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
 {{- end }}
