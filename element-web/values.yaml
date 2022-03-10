@@ -49,11 +49,11 @@ certificate:
     dnsNames:
     - element.rwx.im
 
-
 ingress:
   enabled: true
   annotations: {}
-  tls: []
+  tls:
+    secretName: element-rwx-im-tls
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

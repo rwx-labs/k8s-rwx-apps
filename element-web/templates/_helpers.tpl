@@ -60,14 +60,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-Create the name of the certificate
-*/}}
-{{- define "element-web.certificateName" -}}
-{{- if .Values.certificate.create }}
-{{- default (include "element-web.fullname" .) .Values.certificate.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
