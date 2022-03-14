@@ -1,0 +1,59 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "wayback.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-http
+  labels:
+    {{- include "wayback.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.ingress.hostname }}`)
+    middlewares:
+    - name: {{ $fullName }}-https-redirect
+    {{- with .Values.ingress.middlewares }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    services:
+    - name: {{ $fullName }}
+      kind: Service
+      port: {{ .Values.service.port }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-https
+  labels:
+    {{- include "wayback.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.ingress.hostname }}`)
+    {{- with .Values.ingress.middlewares }}
+    middlewares:
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    services:
+    - name: {{ $fullName }}
+      kind: Service
+      port: {{ .Values.service.port }}
+  {{- with .Values.ingress.tls }}
+  tls:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+{{- end }}
