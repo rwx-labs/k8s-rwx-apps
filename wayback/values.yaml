@@ -42,7 +42,8 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hostname: wayback.rwx.im
-  tls: []
+  tls:
+    secretName: wayback-rwx-im-tls
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
