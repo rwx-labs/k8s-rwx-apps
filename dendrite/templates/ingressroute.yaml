@@ -1,0 +1,58 @@
+{{- if .Values.ingressRoute.enabled -}}
+{{- $fullName := include "dendrite.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-http
+  labels:
+    {{- include "dendrite.labels" . | nindent 4 }}
+  {{- with .Values.ingressRoute.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.ingressRoute.host }}`)
+    middlewares:
+    - name: {{ $fullName }}-https-redirect
+    {{- with .Values.ingressRoute.middlewares }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    services:
+    - name: {{ $fullName }}
+      kind: Service
+      port: http
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ $fullName }}-https
+  labels:
+    {{- include "dendrite.labels" . | nindent 4 }}
+  {{- with .Values.ingressRoute.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`{{ .Values.ingressRoute.host }}`)
+    {{- with .Values.ingressRoute.middlewares }}
+    middlewares:
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    services:
+    - name: {{ $fullName }}
+      kind: Service
+      port: http
+  {{- with .Values.ingressRoute.tls | required "ingressRoute.tls is required" }}
+  tls:
+  {{- . | toYaml | nindent 4 }}
+  {{- end }}
+{{- end }}
