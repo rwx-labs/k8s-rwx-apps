@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "chadgpt.fullname" . }}
+  name: {{ include "chadgpt.fullname" . }}-magistr
   labels:
     {{- include "chadgpt.labels" . | nindent 4 }}
 spec:
