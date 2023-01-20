@@ -36,7 +36,7 @@ spec:
             name: {{ include "chadgpt.fullname" . }}-env
         volumeMounts:
         - name: config
-          mountPath: /usr/src/app
+          mountPath: /usr/src/app/config.yaml
           subPath: config.yaml
       {{- with .Values.nodeSelector }}
       nodeSelector:
