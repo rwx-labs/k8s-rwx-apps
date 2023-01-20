@@ -53,3 +53,6 @@ spec:
       - name: config
         configMap:
           name: {{ include "chadgpt.fullname" . }}-magistr
+          items:
+          - key: config.yaml
+            path: config.yaml
