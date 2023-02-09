@@ -31,12 +31,15 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
+        env:
+        - name: CONFIG_PATH
+          value: /config/config.yaml
         envFrom:
         - secretRef:
             name: {{ include "chadgpt.fullname" . }}-env
         volumeMounts:
         - name: config
-          mountPath: /usr/src/app
+          mountPath: /config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -53,6 +56,3 @@ spec:
       - name: config
         configMap:
           name: {{ include "chadgpt.fullname" . }}
-          items:
-          - key: config.yaml
-            path: config.yaml
