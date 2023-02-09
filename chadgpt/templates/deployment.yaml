@@ -34,6 +34,9 @@ spec:
         envFrom:
         - secretRef:
             name: {{ include "chadgpt.fullname" . }}-env
+        volumeMounts:
+        - name: config
+          mountPath: /usr/src/app
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -46,3 +49,8 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+      - name: config
+        configMap:
+          name: {{ include "chadgpt.fullname" . }}
+
