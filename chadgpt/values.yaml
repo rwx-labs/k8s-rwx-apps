@@ -21,6 +21,9 @@ securityContext:
   runAsNonRoot: true
   runAsUser: 1000
 
+sealedSecret:
+  enabled: true
+
 resources:
   limits:
     cpu: 500m

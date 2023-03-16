@@ -38,7 +38,7 @@ spec:
           value: /config/config.yaml
         envFrom:
         - secretRef:
-            name: {{ include "chadgpt.fullname" . }}-env
+            name: chadgpt-env
         volumeMounts:
         - name: config
           mountPath: /config
