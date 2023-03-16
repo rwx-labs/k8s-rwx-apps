@@ -2,7 +2,7 @@ image:
   repository: ghcr.io/rwx-labs/chadgpt
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "sha-35a112bccb960088e1f49e7f08d508a16e505024"
+  tag: "sha-6bb97afe7e58dd5d4ff7b24a2dc3f36c9851fe5c"
 
 imagePullSecrets: []
 nameOverride: ""
