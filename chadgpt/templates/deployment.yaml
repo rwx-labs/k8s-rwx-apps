@@ -42,6 +42,7 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
+        args: [-c, /config/config.yaml]
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
