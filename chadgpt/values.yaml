@@ -55,6 +55,7 @@ irc:
   channels:
     - "#uplink"
     - "#chad"
+    - "#omnigame"
   # List of nicknames to ignore messages from.
   ignored_nicks: ["meta"]
 
