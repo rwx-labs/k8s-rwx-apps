@@ -71,7 +71,7 @@ openai:
   # temperature: 1
 
   # The maximum number of tokens to generate in the chat completion.
-  max_tokens: 150
+  max_tokens: 400
 
   # An alternative to sampling with temperature, called nucleus sampling, where
   # the model considers the results of the tokens with top_p probability mass.
