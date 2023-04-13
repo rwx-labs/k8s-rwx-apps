@@ -1,0 +1,38 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: magistr-http
+  labels:
+    app.kubernetes.io/name: magistr
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: Host(`magistr.dk`)
+    kind: Rule
+    middlewares:
+    - name: redirect-to-https
+    services:
+    - name: magistr
+      kind: Service
+      port: http
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: magistr-https
+  labels:
+    app.kubernetes.io/name: magistr
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`magistr.dk`)
+    kind: Rule
+    services:
+    - name: magistr
+      kind: Service
+      port: http
+  tls:
+    secretName: magistr.dk-tls

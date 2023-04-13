@@ -1,0 +1,11 @@
+images:
+- name: ghcr.io/rwx-labs/magistr
+  newTag: test-2
+
+namespace: magistr-prod
+
+resources:
+- ../../base
+- ./middleware.yaml
+- ./certificate.yaml
+- ./ingressroute.yaml
