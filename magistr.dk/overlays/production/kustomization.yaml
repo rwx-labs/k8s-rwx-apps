@@ -9,3 +9,6 @@ resources:
 - ./middleware.yaml
 - ./certificate.yaml
 - ./ingressroute.yaml
+- ./sealedsecret.postgres.yaml
+patchesStrategicMerge:
+- ./deployment.yaml
