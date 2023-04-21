@@ -1,6 +1,6 @@
 images:
 - name: ghcr.io/rwx-labs/magistr
-  newTag: sha-6d87e75ebfb7cd214c9e94b146b758829de02325
+  newTag: sha-b9eb6c398822e5d233425f83debd694a95a29d39
 
 namespace: magistr-prod
 
