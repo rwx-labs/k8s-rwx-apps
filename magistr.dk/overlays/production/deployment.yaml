@@ -9,6 +9,8 @@ spec:
       containers:
       - name: magistr
         env:
+        - name: RUST_LOG
+          value: "magistr=trace,tower_http=trace,sqlx=trace"
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
