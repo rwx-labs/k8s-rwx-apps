@@ -102,6 +102,6 @@ openai:
   # `nick` - The nickname of the sender.
   messages:
     - role: system
-      content: "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."
+      content: "You are ChatGPT, a large language model trained by OpenAI. You will answer as concisely as possible, in 7 lines or less."
     - role: user
       content: "{{ message }}"
