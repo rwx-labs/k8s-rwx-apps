@@ -14,7 +14,7 @@ irc:
   channels:
     - "#coding"
   # List of nicknames to ignore messages from.
-  ignored_nicks: ["dick", "Eve"]
+  ignored_nicks: ["dick", "Eve", "chad", "turbochad", "chad_", "turbochad_"]
 
 turbochad:
   enabled: false

@@ -14,4 +14,4 @@ irc:
   channels:
     - "#magistr"
   # List of nicknames to ignore messages from.
-  ignored_nicks: ["arenamusen", "robutler", "hactar", "schrute"]
+  ignored_nicks: ["arenamusen", "robutler", "hactar", "schrute", "chad", "turbochad", "chad_", "turbochad"]
