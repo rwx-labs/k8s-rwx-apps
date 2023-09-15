@@ -1,4 +1,4 @@
 helm:
   parameters:
-  - name: image.tag
-    value: "edge"
+    - name: image.tag
+      value: "sha256:86f3961333c1bb5e5b6c0b08d07f21118838dbdd374bcc1324b3710bf3685afb"
