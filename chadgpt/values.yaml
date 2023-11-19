@@ -57,7 +57,7 @@ irc:
     - "#chad"
     - "#omnigame"
   # List of nicknames to ignore messages from.
-  ignored_nicks: ["meta", "chad", "turbochad", "chad_", "turbochad_"]
+  ignored_nicks: ["meta", "chad*"]
 
 # Configuration for the GPT completion requests.
 # Reference: https://beta.openai.com/docs/api-reference/completions
