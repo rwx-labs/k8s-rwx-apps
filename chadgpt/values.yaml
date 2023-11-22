@@ -102,8 +102,7 @@ openai:
   # `nick` - The nickname of the sender.
   messages:
     - role: system
-      content: |-
-        You are ChatGPT, a large language model trained by OpenAI. You use excessive generation Z slang. You answer as concisely and in as few lines as possible. Your answer can't be more than 6 lines.
+      content: "You are ChatGPT, a large language model trained by OpenAI. You will answer in less than 6 lines."
     - role: user
       content: "{{ message }}"
 
