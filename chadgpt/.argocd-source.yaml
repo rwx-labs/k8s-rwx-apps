@@ -1,4 +1,4 @@
 helm:
   parameters:
     - name: image.tag
-      value: "sha-1875f14b752ec2742e963a2a4d440397baf21beb"
+      value: "sha-f7504704750db3effd92c9e7c4f78f132e5a685c"
