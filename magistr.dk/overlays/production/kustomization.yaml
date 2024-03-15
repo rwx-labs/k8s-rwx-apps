@@ -1,6 +1,6 @@
 images:
 - name: ghcr.io/rwx-labs/magistr
-  newTag: 0.2.0
+  newTag: 0.2.1
 
 namespace: magistr-prod
 
