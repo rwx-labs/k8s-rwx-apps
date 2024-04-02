@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: stromligning
+  labels:
+    app.kubernetes.io/name: stromligning
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`stromligning.infra.rwx.im`)
+    kind: Rule
+    services:
+    - name: stromligning
+      kind: Service
+      port: 3000

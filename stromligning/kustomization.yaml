@@ -1,0 +1,10 @@
+resources:
+- ./manifests/deployment.yaml
+- ./manifests/service.yaml
+- ./manifests/ingressroute.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name: ghcr.io/rwx-labs/stromligning
+  newName: ghcr.io/rwx-labs/stromligning
+  newTag: sha-1e11f55e6a8c94c22250e626c96b331b72d851aa

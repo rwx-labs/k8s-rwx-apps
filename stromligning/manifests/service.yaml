@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stromligning
+  labels:
+    app.kubernetes.io/name: stromligning
+spec:
+  ports:
+  - name: http
+    port: 3000
+  selector:
+    app.kubernetes.io/name: stromligning
