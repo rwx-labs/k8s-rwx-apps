@@ -1,0 +1,135 @@
+kratos:
+  kratos:
+    automigration:
+      enabled: true
+
+    config:
+      dsn: memory
+
+      secrets:
+        cookie:
+        - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+        cipher:
+        - 32-LONG-SECRET-NOT-SECURE-AT-ALL
+
+      identity:
+        default_schema_id: default
+        schemas:
+        - id: default
+          url: file:///etc/config/identity.default.schema.json
+
+      courier:
+        smtp:
+          connection_uri: smtps://test:test@mailslurper:1025/?skip_ssl_verify=true
+
+      selfservice:
+        default_browser_return_url: http://id.rwx.im/
+        allowed_return_urls:
+        - http://127.0.0.1:4455
+        - http://localhost:19006/Callback
+        - exp://localhost:8081/--/Callback
+        - http://id.rwx.im
+
+        methods:
+          password:
+            enabled: true
+          totp:
+            config:
+              issuer: Kratos
+            enabled: true
+          lookup_secret:
+            enabled: true
+          link:
+            enabled: true
+          code:
+            enabled: true
+
+        flows:
+          error:
+            ui_url: http://id.rwx.im/error
+
+          settings:
+            ui_url: http://id.rwx.im/settings
+            privileged_session_max_age: 15m
+            required_aal: highest_available
+
+          recovery:
+            enabled: true
+            ui_url: http://id.rwx.im/recovery
+            use: code
+
+          verification:
+            enabled: true
+            ui_url: http://id.rwx.im/verification
+            use: code
+            after:
+              default_browser_return_url: http://id.rwx.im/
+
+          logout:
+            after:
+              default_browser_return_url: http://id.rwx.im/login
+
+          login:
+            ui_url: http://id.rwx.im/login
+            lifespan: 10m
+
+          registration:
+            lifespan: 10m
+            ui_url: http://id.rwx.im/registration
+            after:
+              password:
+                hooks:
+                - hook: session
+                - hook: show_verification_ui
+
+    identitySchemas:
+      "identity.default.schema.json": |
+        {
+          "$id": "https://schemas.ory.sh/presets/kratos/quickstart/email-password/identity.schema.json",
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "title": "Person",
+          "type": "object",
+          "properties": {
+            "traits": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "title": "E-Mail",
+                  "minLength": 3,
+                  "ory.sh/kratos": {
+                    "credentials": {
+                      "password": {
+                        "identifier": true
+                      }
+                    },
+                    "verification": {
+                      "via": "email"
+                    },
+                    "recovery": {
+                      "via": "email"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "first": {
+                      "title": "First Name",
+                      "type": "string"
+                    },
+                    "last": {
+                      "title": "Last Name",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "email"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
