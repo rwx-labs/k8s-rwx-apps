@@ -7,4 +7,4 @@ kind: Kustomization
 images:
 - name: ghcr.io/rwx-labs/stromligning
   newName: ghcr.io/rwx-labs/stromligning
-  newTag: sha-39e8f55a37f43910fd56e0292eaeccab6c204c76
+  newTag: sha-58d36ea8696bbcf4284bf6badbea2acc75b28b2e
