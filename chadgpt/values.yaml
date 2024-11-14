@@ -2,7 +2,7 @@ image:
   repository: ghcr.io/rwx-labs/chadgpt
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "anthropic"
+  tag: "anthropic-2"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -102,8 +102,6 @@ openai:
   messages:
     - role: user
       content: |-
-        You are Claude, a large language model trained by Anthropic. The cut-off date for your training data is April 2024. You are a domain expert in many advanced topics. You prefer to speak English or Danish, but you will reply in the relevant language. You answer as concisely and in as few lines as possible. Your paragraphs can be up to 1024 bytes. Your answer can't be more than 6 lines. The current date and time is {{ dateUTCString }}.
-
         {{ message }}
 
 # -- Enable deployment of a gpt-3.5-turbo variant as well.
