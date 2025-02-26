@@ -57,6 +57,7 @@ irc:
     - "#chad"
   # List of nicknames to ignore messages from.
   ignored_nicks: ["meta", "chad*", "zeta*", "zet4", "anhero*", "moss*"]
+  message_max_length: 4094
 
 # Configuration for the GPT completion requests.
 # Reference: https://beta.openai.com/docs/api-reference/completions

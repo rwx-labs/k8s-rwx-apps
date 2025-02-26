@@ -24,6 +24,7 @@ data:
       # List of nicknames to ignore messages from.
       ignored_nicks:
         {{- .Values.irc.ignored_nicks | required "irc.ignored_nicks must be a list of nicknames" | toYaml | nindent 8 }}
+      message_max_length: {{ .Values.irc.message_max_length | quote }}
 
     # Configuration for the GPT completion requests.
     # Reference: https://beta.openai.com/docs/api-reference/completions
