@@ -4,7 +4,7 @@ image:
   repository: ghcr.io/rwx-labs/meta-mail-ingress
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "sha-4b4b22a98b025de6aef0edd3d608ff05cfc00790"
+  tag: "sha-79ffd164234f089c013f8c6925e7af0abad4dce0"
 
 imagePullSecrets: []
 nameOverride: ""
