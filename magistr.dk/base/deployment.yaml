@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: magistr
 spec:
-  replicas: 2
+  replicas: 4
   strategy:
     rollingUpdate:
       maxSurge: "50%"
