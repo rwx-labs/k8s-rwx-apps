@@ -28,11 +28,11 @@ spec:
           containerPort: 3000
         resources:
           limits:
-            memory: 128M
-            cpu: 100m
+            memory: 512M
+            cpu: 1
           requests:
-            memory: 16M
-            cpu: 5m
+            memory: 128M
+            cpu: 500m
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
