@@ -11,7 +11,7 @@ spec:
         env:
         - name: RUST_LOG
           value: "magistr=trace,tower_http=trace,sqlx=trace"
-        - name: DATABASE_URL
+        - name: MAGISTR_DATABASE_URL
           valueFrom:
             secretKeyRef:
               name: postgres
