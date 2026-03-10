@@ -9,7 +9,7 @@ spec:
   entryPoints:
   - web
   routes:
-  - match: Host(`magistr.dk`)
+  - match: Host(`magistr.dk`) || Host(`www.magistr.dk`)
     kind: Rule
     middlewares:
     - name: redirect-to-https
@@ -28,7 +28,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`magistr.dk`)
+  - match: Host(`magistr.dk`) || Host(`www.magistr.dk`)
     kind: Rule
     services:
     - name: magistr
